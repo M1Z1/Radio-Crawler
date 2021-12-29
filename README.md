@@ -1,5 +1,5 @@
 - [**Radio Crawler Overview**](#radio-crawler-overview)
-- [**Installation**](#installation)
+- [**Installation & quick start guide**](#installation--quick-start-guide)
 - [**Structure**](#structure)
 - [**Modules Reference**](#modules-reference)
   - [**~envAD arguments**](#envad-arguments)
@@ -372,7 +372,7 @@ The shuffle engine can be started and stopped using the `~showplayer.play;` and 
 
 
 - [**Radio Crawler Overview**](#radio-crawler-overview)
-- [**Installation**](#installation)
+- [**Installation & quick start guide**](#installation--quick-start-guide)
 - [**Structure**](#structure)
 - [**Modules Reference**](#modules-reference)
   - [**~envAD arguments**](#envad-arguments)
