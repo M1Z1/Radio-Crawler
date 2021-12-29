@@ -95,7 +95,7 @@ You can control the parameters for every voice at once using the MasterParams fu
 `
 You can start and stop every module outside the context of pieces by using the suffix Pat:
 
-```js
+```supercollider
 lfo1Pat.play; 
 lfo1Pat.stop;
 tuner3Pat.play;
@@ -106,7 +106,7 @@ etc.
 ## **~envAD arguments**
 
 1. **rate type** (symbol):
-```js
+```supercollider
 \const // constant rate
 \rand  // random rate
 \drunk // random walk
@@ -115,13 +115,13 @@ etc.
 ```
 2. **staccato-legato** (symbol) :
 
-```js
+```supercollider
 \long  // envelope is on for the full duration 
 \short // envelope is off for half the duration
 ```
 3. **rate** (number or list of numbers):
 
-```js
+```supercollider
 1.0 // single number when rate type is \const
 [1,3,0.2] // range (list of 3 numbers), minimum, maximum, step.
 ```
@@ -131,20 +131,20 @@ When arg1 is \rand, arg3 takes two lists of range, list 1 determines the random 
 
 
 4. **rest probability** (0-1):
-```js
+```supercollider
 0.5 //0-1 float, 1 = always rest
 ```
 5. **peak volume** (number):
 
-```js
+```supercollider
 0 // Volume in db. a number between 0 (peak) and -40 (inaudible)
 ```
 6. **solo** (0 or 1):
-```js
+```supercollider
 0 // 0 or 1 when solo is 1 the triggered voice will mute all other voices
 ```
 Example:
-```js
+```supercollider
 ~envAD1Params.value([\const, \long, 1, 0.5, 0,0 ]);
 ~envAD4Params.value([\rand, \long, [1,3,0.2], [2, 5, 0.5],0.2,-6,0])
 ```
@@ -152,7 +152,7 @@ Example:
 ## **~lfo arguments**
 
 1. **durations OR random ranges** (list of numbers):
-```js
+```supercollider
 [0.5,2,5] // element1: duration to reach target volume
           // element2: duration target volume is sustained
           // element3: duration from target to -40db (inaudible)
@@ -164,11 +164,11 @@ Example:
 // Same as above but with pairs of random limits(min-max). Each full cycle the LFO will pick new random durations.
 ```
 2. **target volume** (number):
-```js
+```supercollider
 0 // Target volume in db. A number between -40, 0.
 ```
 arg3 **curves** (symbol, number or list):
-```js
+```supercollider
 \step		//flat segments.
 \linear	        \lin	//linear segments, the default.
 \exponential	\exp	//natural exponential growth and decay. In this case, the levels must all be nonzero and the have the same sign.
@@ -179,14 +179,14 @@ arg3 **curves** (symbol, number or list):
 a Float		//a curvature value for all segments. 0 means linear, positive and negative numbers curve the segment up and down.an Array of symbols or floats curvature values for each segment.
 ```
 Examples:
-```js
+```supercollider
 ~lfo1Params.value([[0.5,2,5], 0, \lin]);
 ~lfo3Params.value([[1,3,1,4,3,6], -6, \sin])
 ```
 ## **~tuner arguments**
 
  1. **rate type** (symbol):
- ```js
+ ```supercollider
 \const // constant rate
 \rand  // random rate
 \drunk // random walk
@@ -197,13 +197,13 @@ Examples:
 ```
 2. **rate** (number or list of numbers):
 
-```js
+```supercollider
 1.0 // single number when rate type is \const
 [1,3,0.2] // range (list of 3 numbers), minimum, maximum, step.
 // when arg1 is latch or silentlatch this argument can either be ommited or it can be given a dummy init.
 ```
 3. **tuner mode** (symbol):
-   ```js
+   ```supercollider
    \randrange // picks frequencies from a given random range
    \scanner   // scans from min to max frequency
    \randlist  // picks random elements from a list
@@ -212,7 +212,7 @@ Examples:
 
 4. **coupling modes and frequencies** (symbol):
 
-```js
+```supercollider
       \free   // When free, two different lists need to be provided, one containing frequencies and one containing modes. Frequencies behave according to the tuner mode, modes are picked randomly from the list:
       ~tuner1Params.value([\const, 2, \randlist, \free,[4467.48,4769.98,367.9,400],[\AM,\FM,\USB]]);
       
@@ -224,7 +224,7 @@ Examples:
 ```
 5. **List of frequencies or freq/mode** (list):
 
-```js
+```supercollider
 
 [100, 1000]  // When tuner mode is \randrange or \scanner provide a list of two numbers (min-max).
 [4467.48,4769.98,367.9,400] // When tuner mode is \randlist, \shuffle or \loop, provide a list of frequencies.
@@ -238,11 +238,11 @@ Examples:
    
    *only when \free*
 
-```js   
+```supercollider   
 [\CW, \LSB, \USB, \AM, \FM, \AMsync] // The available modes
 ```
 Examples:
-```js
+```supercollider
 ~tuner1Params.value([\const,2, \shuffle, \free,[4467.48,4769.98],2,["AM","FM"]]);
 ~tunerMasterParams.value([\acc, [0.5,5,0.1], \randlist, \sticky, [710,\AM,19.24, \USB, 38.99, \LSB, 77.58, \AMsync ]]);
 ~tunerMonoParams.value([\drunk, [1,3,0.2], \randlist, \free, [710, 19.24, 38.99, 77.58],[\AM, \USB, \LSB, \AMsync]]);
@@ -263,7 +263,7 @@ Each piece must have a title:
 `~testpiece1`.
 
 The Pspawner syntax is the following: 
-```js
+```supercollider
 
 ~testpiece1 = Pspawner ({|sp|
    w = sp;
@@ -281,7 +281,7 @@ Each piece can be stopped and reset using the `.stop` and `.reset` methods:
 
 The following commands can be written inside the Psawner:
 
- ```js 
+ ```supercollider 
  w.wait(5); // any int or float. Waits for the specified time before moving to the next piece of code. This is the way to give a piece temporal characteristics
 
  w.par(~lfo1); // Any module. Plays the module.
@@ -313,7 +313,7 @@ Each piece must be part of a list and must have a duration range. The shuffle en
 
 Shows are using the following syntax:
 
-```js
+```supercollider
 ~show1test = [[ 
 ~testpiece1 = Pspawner ({|sp|
 
