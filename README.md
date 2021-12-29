@@ -5,7 +5,7 @@
   - [**~envAD arguments**](#envad-arguments)
   - [**~lfo arguments**](#lfo-arguments)
   - [**~tuner arguments**](#tuner-arguments)
-  - [**Limiter**](#limiter)
+  - [**~limiter**](#limiter)
 - [**Pieces reference**](#pieces-reference)
   - [**Piece commands**](#piece-commands)
   - [**Compiling shows from pieces**](#compiling-shows-from-pieces)
@@ -249,7 +249,7 @@ Examples:
 ~tuner3Params.value([\silentlatch, \loop, \sticky,[100, \AM, 200, \FM, 300, \CW]]);
 ```
 
-## **Limiter**
+## **~limiter**
 
 A limiter setting is also available. You can tweak this to get a different balance between static/signal volume. The default limiter value is -18db:
 
@@ -361,7 +361,7 @@ The shuffle engine can be started and stopped using the `~showplayer.play;` and 
   - [**~envAD arguments**](#envad-arguments)
   - [**~lfo arguments**](#lfo-arguments)
   - [**~tuner arguments**](#tuner-arguments)
-  - [**Limiter**](#limiter)
+  - [**~limiter**](#limiter)
 - [**Pieces reference**](#pieces-reference)
   - [**Piece commands**](#piece-commands)
   - [**Compiling shows from pieces**](#compiling-shows-from-pieces)
