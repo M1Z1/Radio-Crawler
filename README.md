@@ -1,13 +1,14 @@
 - [**Radio Crawler Overview**](#radio-crawler-overview)
 - [**Installation**](#installation)
-- [**Modules Reference:**](#modules-reference)
-  - [**~envAD arguments:**](#envad-arguments)
-  - [**~lfo arguments:**](#lfo-arguments)
-  - [**~tuner arguments:**](#tuner-arguments)
-  - [**Limiter:**](#limiter)
+- [Structure](#structure)
+- [**Modules Reference**](#modules-reference)
+  - [**~envAD arguments**](#envad-arguments)
+  - [**~lfo arguments**](#lfo-arguments)
+  - [**~tuner arguments**](#tuner-arguments)
+  - [**Limiter**](#limiter)
 - [**Pieces reference**](#pieces-reference)
-  - [**Piece commands:**](#piece-commands)
-  - [**Compiling shows from pieces:**](#compiling-shows-from-pieces)
+  - [**Piece commands**](#piece-commands)
+  - [**Compiling shows from pieces**](#compiling-shows-from-pieces)
 - [**Shuffling engine reference**](#shuffling-engine-reference)
 # **Radio Crawler Overview**
 
@@ -42,7 +43,7 @@ At this point the chromium browser should automatically run with 4 tabs of the h
 Open the radio_crawler_main.scd file with supercollider and evaluate the code using ctrl (cmd) + enter. Some example pieces should start playing. You can monitor Radio Crawler's activity on the post window. You can stop all activity and mute the radios by evaluating ```~mute.value;``` on line 46 of radio_crawler_main. You can also use the shortcut ctrl + . (period).  
 
 
-Structure:
+# Structure
 
 Radio Crawler is using the puppeteer node library to assume control of the WebSDR parameters. The supercollider programs are algorithmically controlling the parameters by sending OSC data to the node script. Radio Crawler works on data control level, the audio produced is solely from the webpage.  
 
@@ -75,7 +76,7 @@ The shuffle engine collects the list of pieces and plays them in a non-repeating
 
 
 
-# **Modules Reference:**
+# **Modules Reference**
 
 Each module has 4 seperate and independant instances (voices) denoted by the numbers 1-4.
 
@@ -102,7 +103,7 @@ tuner3Pat.stop;
 ```
 etc.
 
-## **~envAD arguments:**
+## **~envAD arguments**
 
 1. **rate type** (symbol):
 ```js
@@ -148,7 +149,7 @@ Example:
 ~envAD4Params.value([\rand, \long, [1,3,0.2], [2, 5, 0.5],0.2,-6,0])
 ```
 
-## **~lfo arguments:**
+## **~lfo arguments**
 
 1. **durations OR random ranges** (list of numbers):
 ```js
@@ -182,7 +183,7 @@ Examples:
 ~lfo1Params.value([[0.5,2,5], 0, \lin]);
 ~lfo3Params.value([[1,3,1,4,3,6], -6, \sin])
 ```
-## **~tuner arguments:**
+## **~tuner arguments**
 
  1. **rate type** (symbol):
  ```js
@@ -248,7 +249,7 @@ Examples:
 ~tuner3Params.value([\silentlatch, \loop, \sticky,[100, \AM, 200, \FM, 300, \CW]]);
 ```
 
-## **Limiter:**
+## **Limiter**
 
 A limiter setting is also available. You can tweak this to get a different balance between static/signal volume. The default limiter value is -18db:
 
@@ -276,7 +277,7 @@ Each piece can be stopped and resetted using the `.stop` and `.reset` methods:
 `~testpiece1.stop;` `testpiece1.reset;`
 
 
- ## **Piece commands:**
+ ## **Piece commands**
 
 The following commands can be written inside the Psawner:
 
@@ -306,7 +307,7 @@ loop {
 
 
 
-## **Compiling shows from pieces:**
+## **Compiling shows from pieces**
 
 Each piece must be part of a list and must have a duration range. The shuffle engine uses these lists and ranges to create shows algorithmically.
 
@@ -353,7 +354,18 @@ The shuffle engine can be started and stopped using the `~showplayer.play;` and 
 
 
 
-
+- [**Radio Crawler Overview**](#radio-crawler-overview)
+- [**Installation**](#installation)
+- [Structure](#structure)
+- [**Modules Reference**](#modules-reference)
+  - [**~envAD arguments**](#envad-arguments)
+  - [**~lfo arguments**](#lfo-arguments)
+  - [**~tuner arguments**](#tuner-arguments)
+  - [**Limiter**](#limiter)
+- [**Pieces reference**](#pieces-reference)
+  - [**Piece commands**](#piece-commands)
+  - [**Compiling shows from pieces**](#compiling-shows-from-pieces)
+- [**Shuffling engine reference**](#shuffling-engine-reference)
 
 
 
