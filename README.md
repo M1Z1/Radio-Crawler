@@ -1,10 +1,6 @@
-# Radio-Crawler
-A framework for algorithmically controlling WebSDRs using Supercollider and node.js
+# **Radio Crawler Overview**
 
 
-
-
-**Radio Crawler Overview**
 
 Welcome to the Radio Crawler documentation! Radio Crawler is a system that allows the user to algorithmically control 4 unique instances of the Wide-band WebSDR page http://websdr.ewi.utwente.nl:8901. Through the page you can control and listen to a short-wave radio receiver located at the amateur radio club ETGD at the University of Twente. Essentially, Radio Crawler is a framework for creating algorithmic sound pieces using live shortwave radio transmissions.
 
@@ -14,7 +10,7 @@ Radio Crawler let's you control the volume envelope of each radio instance indep
 
 Radio Crawler  let's you organise your radio pieces and shuffle them creating long-form works.
 
-**Installation:**
+## **Installation:**
 
 Radio Crawler requires the newest version of node.js, Supercollider and a source code editor.
 
@@ -37,7 +33,7 @@ At this point the chromium browser should automatically run with 4 tabs of the h
 Open the radio_crawler_main.scd file with supercollider and evaluate the code using ctrl (cmd) + enter. Some example pieces should start playing. You can monitor Radio Crawler's activity on the post window. You can stop all activity and mute the radios by evaluating ```~mute.value;``` on line 46 of radio_crawler_main. You can also use the shortcut ctrl + . (period).  
 
 
-Structure:
+# Structure:
 
 Radio Crawler is using the puppeteer node library to assume control of the WebSDR parameters. The supercollider programs are algorithmically controlling the parameters by sending OSC data to the node script. Radio Crawler works on data control level, the audio produced is solely from the webpage.  
 
@@ -70,7 +66,7 @@ The shuffle engine collects the list of pieces and plays them in a non-repeating
 
 
 
-**Modules Reference:**
+# **Modules Reference:**
 
 Each module has 4 seperate and independant instances (voices) denoted by the numbers 1-4.
 
@@ -97,9 +93,9 @@ tuner3Pat.stop;
 ```
 etc.
 
-**~envAD arguments**
+### **~envAD arguments**
 
-1. **rate type** (symbol):
+##### 1. **rate type** (symbol):
 ```js
 \const // constant rate
 \rand  // random rate
@@ -143,7 +139,7 @@ Example:
 ~envAD4Params.value([\rand, \long, [1,3,0.2], [2, 5, 0.5],0.2,-6,0])
 ```
 
-**~lfo arguements**
+## **~lfo arguments**
 
 1. **durations OR random ranges** (list of numbers):
 ```js
@@ -172,12 +168,12 @@ arg3 **curves** (symbol, number or list):
 \cubed	 \cub	//cubed segment.
 a Float		//a curvature value for all segments. 0 means linear, positive and negative numbers curve the segment up and down.an Array of symbols or floats curvature values for each segment.
 ```
-Examples:
+**Examples:**
 ```js
 ~lfo1Params.value([[0.5,2,5], 0, \lin]);
 ~lfo3Params.value([[1,3,1,4,3,6], -6, \sin])
 ```
-**~tuner arguments**
+## **~tuner arguments**
 
  1. **rate type** (symbol):
  ```js
@@ -243,7 +239,7 @@ Examples:
 ~tuner3Params.value([\silentlatch, \loop, \sticky,[100, \AM, 200, \FM, 300, \CW]]);
 ```
 
-**Limiter:**
+## **Limiter:**
 
 A limiter setting is also available. You can tweak this to get a different balance between static/signal volume. The default limiter value is -18db:
 
@@ -274,7 +270,7 @@ Each piece can be stopped and resetted using the `.stop` and `.reset` methods:
 `~testpiece1.stop;` `testpiece1.reset;`
 
 
- **Piece Commands:**
+ # **Piece Commands:**
 
 The following commands can be written inside the Psawner:
 
@@ -304,7 +300,7 @@ loop {
 
 
 
-**Compiling shows from pieces:**
+# **Compiling shows from pieces:**
 
 Each piece must be part of a list and must have a duration range. The shuffle engine uses these lists and ranges to create shows algorithmically.
 
@@ -336,7 +332,7 @@ When the `~show1test` will be played by the shuffle engine it will randomly pick
 
 See the pieces.scd file for more examples of pieces and shows.
 
-**Shuffling engine**
+# **Shuffling engine**
 
 The shuffling engine plays a show by randomizing the order of pieces and their duration. The shuffling engine can be located at radio_crawler_main.scd.
 
