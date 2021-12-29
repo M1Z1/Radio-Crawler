@@ -1,0 +1,17 @@
+{
+  "name": "radiotest",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node radio.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "osc": "^2.4.2",
+    "puppeteer": "^10.2.0",
+    "tone": "^14.7.77"
+  }
+}
