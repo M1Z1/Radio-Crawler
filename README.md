@@ -20,7 +20,7 @@ Radio Crawler lets you control the volume envelope of each radio instance indepe
 
 Radio Crawler  lets you organise your radio pieces and shuffle them, creating long-form works.
 
-# **Installation**
+# **Installation & quick start guide**
 
 Radio Crawler requires the newest version of node.js, Supercollider and a source code editor.
 
@@ -40,8 +40,25 @@ To start the radio engine, type on the terminal: `npm start` or `node radio.js` 
 
 At this point the Chromium browser should automatically run with 4 tabs of the http://websdr.ewi.utwente.nl:8901 website. 
 
-Open the radio_crawler_main.scd file with supercollider and evaluate the code using ctrl (cmd) + enter. Some example pieces should start playing. You can monitor Radio Crawler's activity on the post window. You can stop all activity and mute the radios by evaluating ```~mute.value;``` on line 46 of radio_crawler_main. You can also use the shortcut ctrl + . (period).  
+Open the radio_crawler_main.scd file with supercollider and evaluate the code using ctrl (cmd) + enter. Some example pieces should start playing. You can monitor Radio Crawler's activity on the post window. You can stop all activity and mute the radios by evaluating ```~mute.value;```. You can also use the shortcut ctrl + . (period). 
 
+You can evaluate single lines with shift + enter.
+
+You can change the show by changing the argument inside the `~show.value();` function. There are currently 2 default shows (~exampleshow1, ~exampleshow2).
+
+You can start a show with `~showplayer.play;`. 
+
+You can stop a show with `~showplayer.stop;`.
+
+You can mute the audio with `~mute.value;`.
+
+You can locate the example pieces inside the pieces.scd file.
+
+You can play any of the example pieces individually with `~piecename.play;` and you can stop and reset them with `~piecename.stop;` `~piecename.play;`.
+
+You can start and stop any of the modules outside of the pieces context with `~modulenameVoicenumberPat.play;` and `~modulenameVoicenumberPat.stop;`
+
+You can change the parameters of any module with `~modulenameVoicenumberParams.value(your arguments here);`
 
 # **Structure**
 
