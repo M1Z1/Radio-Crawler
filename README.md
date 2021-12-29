@@ -1,6 +1,6 @@
 - [**Radio Crawler Overview**](#radio-crawler-overview)
 - [**Installation**](#installation)
-- [Structure](#structure)
+- [**Structure**](#structure)
 - [**Modules Reference**](#modules-reference)
   - [**~envAD arguments**](#envad-arguments)
   - [**~lfo arguments**](#lfo-arguments)
@@ -43,7 +43,7 @@ At this point the chromium browser should automatically run with 4 tabs of the h
 Open the radio_crawler_main.scd file with supercollider and evaluate the code using ctrl (cmd) + enter. Some example pieces should start playing. You can monitor Radio Crawler's activity on the post window. You can stop all activity and mute the radios by evaluating ```~mute.value;``` on line 46 of radio_crawler_main. You can also use the shortcut ctrl + . (period).  
 
 
-# Structure
+# **Structure**
 
 Radio Crawler is using the puppeteer node library to assume control of the WebSDR parameters. The supercollider programs are algorithmically controlling the parameters by sending OSC data to the node script. Radio Crawler works on data control level, the audio produced is solely from the webpage.  
 
@@ -356,7 +356,7 @@ The shuffle engine can be started and stopped using the `~showplayer.play;` and 
 
 - [**Radio Crawler Overview**](#radio-crawler-overview)
 - [**Installation**](#installation)
-- [Structure](#structure)
+- [**Structure**](#structure)
 - [**Modules Reference**](#modules-reference)
   - [**~envAD arguments**](#envad-arguments)
   - [**~lfo arguments**](#lfo-arguments)
