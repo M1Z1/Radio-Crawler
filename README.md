@@ -12,13 +12,13 @@
 - [**Shuffling engine reference**](#shuffling-engine-reference)
 # **Radio Crawler Overview**
 
-Welcome to the Radio Crawler documentation! Radio Crawler is a system that allows the user to algorithmically control 4 unique instances of the Wide-band WebSDR page http://websdr.ewi.utwente.nl:8901. Through the page you can control and listen to a short-wave radio receiver located at the amateur radio club ETGD at the University of Twente. Essentially, Radio Crawler is a framework for creating algorithmic sound pieces using live shortwave radio transmissions.
+Welcome to the Radio Crawler documentation! Radio Crawler sda is a system that allows the user to algorithmically control 4 unique instances of the Wide-band WebSDR page http://websdr.ewi.utwente.nl:8901. Through the WebSDR you can control and listen to a short-wave radio receiver located at the amateur radio club ETGD at the University of Twente. Essentially, Radio Crawler is a framework for creating algorithmic sound pieces using live shortwave radio transmissions.
 
-Radio Crawler let's you control the radio receiver's frequency and modulation: scan a frequency range randomly or linearly, create loops, shuffle and repeat lists, randomly play a list of frequencies and modes. 
+Radio Crawler lets you control the radio receiver's frequency and modulation: scan a frequency range randomly or linearly, create loops, shuffle and repeat lists, randomly play a list of frequencies and modes. 
 
-Radio Crawler let's you control the volume envelope of each radio instance independantly: Create fades, short events, long events, sparse or dense sonic environments, thick layers or contrapuntal textures.
+Radio Crawler lets you control the volume envelope of each radio instance independently: Create fades, short events, long events, sparse or dense sonic environments, thick layers or contrapuntal textures.
 
-Radio Crawler  let's you organise your radio pieces and shuffle them creating long-form works.
+Radio Crawler  lets you organise your radio pieces and shuffle them, creating long-form works.
 
 # **Installation**
 
@@ -32,13 +32,13 @@ get Visual Studio Code: https://code.visualstudio.com
 
 download Radio Crawler:
 
-Inside the Radio_Crawler_Master folder open the node_script folder with a source code editor. Open a terminal and type: `npm i`
+Inside the Radio_Crawler_Master folder, open the node_script folder with a source code editor. Open a terminal and type: `npm i`
 
-All required dependancies will be installed. One of the dependencies is the chromium browser so it may take a while to finish.
+All required dependencies will be installed. One of the dependencies is the Chromium browser so it may take a while to finish.
 
-To start the radio engine type on the terminal: `npm start` or `node radio.js` **be aware of the volume**
+To start the radio engine, type on the terminal: `npm start` or `node radio.js` **be aware of the volume**
 
-At this point the chromium browser should automatically run with 4 tabs of the http://websdr.ewi.utwente.nl:8901 website. 
+At this point the Chromium browser should automatically run with 4 tabs of the http://websdr.ewi.utwente.nl:8901 website. 
 
 Open the radio_crawler_main.scd file with supercollider and evaluate the code using ctrl (cmd) + enter. Some example pieces should start playing. You can monitor Radio Crawler's activity on the post window. You can stop all activity and mute the radios by evaluating ```~mute.value;``` on line 46 of radio_crawler_main. You can also use the shortcut ctrl + . (period).  
 
@@ -49,7 +49,7 @@ Radio Crawler is using the puppeteer node library to assume control of the WebSD
 
 Radio Crawler is based on three different structural levels. The modules (modules.scd), the pieces (pieces.scd) and the shuffle engine (radio_crawler_main.scd). 
 
-The modules contains the building blocks that are used to create pieces. Currently those are:
+The modules contain the building blocks that are used to create pieces. Currently, those are:
 
 * ```~tuner```: Controls the modulation mode and frequency of the radios
 
@@ -62,7 +62,7 @@ A piece is a collection of timed events, akin to a music tracker. These events c
 * starting and stopping modules   
 * changing the parameters of modules
 
-Each piece will last for a specific duration which is expressed by a random durational range (see pieces reference).
+Each piece will last for a specific duration, which is expressed by a random durational range (see pieces reference).
 
 The shuffle engine collects the list of pieces and plays them in a non-repeating fashion. 
 
@@ -78,7 +78,7 @@ The shuffle engine collects the list of pieces and plays them in a non-repeating
 
 # **Modules Reference**
 
-Each module has 4 seperate and independant instances (voices) denoted by the numbers 1-4.
+Each module has 4 separate and independent instances (voices) denoted by the numbers 1-4.
 
 Each module's parameters can be altered by recalling the Params function.
 
@@ -127,7 +127,7 @@ etc.
 ```
 **Important!**
 
-When arg1 is \rand, arg3 takes two lists of range, list 1 is determines the random range when the envelope is on, list 2 determines the range when the envelope is off. 
+When arg1 is \rand, arg3 takes two lists of range, list 1 determines the random range when the envelope is on, list 2 determines the range when the envelope is off. 
 
 
 4. **rest probability** (0-1):
@@ -213,7 +213,7 @@ Examples:
 4. **coupling modes and frequencies** (symbol):
 
 ```js
-      \free   // When free two different lists need to be provided, one containing frequencies and one containg modes. Frequencies behave according to the tuner mode, modes are picked randomly from the list:
+      \free   // When free, two different lists need to be provided, one containing frequencies and one containing modes. Frequencies behave according to the tuner mode, modes are picked randomly from the list:
       ~tuner1Params.value([\const, 2, \randlist, \free,[4467.48,4769.98,367.9,400],[\AM,\FM,\USB]]);
       
       \sticky // When sticky, one list is provided made with pairs of frequency and mode. Each time a frequency is picked the corresponding mode is selected:
@@ -257,7 +257,7 @@ A limiter setting is also available. You can tweak this to get a different balan
 
 # **Pieces reference**
 
-Pieces structure is based on Supercollider's `Pspawner`. 
+Pieces' structure is based on Supercollider's `Pspawner`. 
 
 Each piece must have a title: 
 `~testpiece1`.
@@ -273,7 +273,7 @@ The Pspawner syntax is the following:
    }); 
    ```
 Each piece can be played using the `.play` method: `~testpiece1.play;` 
-Each piece can be stopped and resetted using the `.stop` and `.reset` methods:
+Each piece can be stopped and reset using the `.stop` and `.reset` methods:
 `~testpiece1.stop;` `testpiece1.reset;`
 
 
@@ -335,7 +335,7 @@ Shows are using the following syntax:
 15, 30
 ]];
 ```
-When the `~show1test` will be played by the shuffle engine it will randomly pick and play the pieces `~testpiece1` and `~testpiece2`. The duration of each piece is each time determined by a random integer inside the duration range.
+When the `~show1test` will be played by the shuffle engine, it will randomly pick and play the pieces `~testpiece1` and `~testpiece2`. The duration of each piece is each time determined by a random integer inside the duration range.
 
 See the pieces.scd file for more examples of pieces and shows.
 
