@@ -1,5 +1,5 @@
 (
-"modules2.scd".loadRelative;
+"modules.scd".loadRelative;
 "pieces.scd".loadRelative;
 o.value;
 p.value;
