@@ -10,8 +10,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "node-fetch": "^3.2.0",
     "osc": "^2.4.2",
     "puppeteer": "^10.2.0",
-    "tone": "^14.7.77"
+    "tone": "^14.7.77",
+    "unisafe": "^1.0.2"
   }
 }
