@@ -1,1 +1,2 @@
-node_script
+**/node_modules
+**/radiolist.json
